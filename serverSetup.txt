@@ -1,0 +1,88 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SETTING UP THE INITIAL ENVIORNMENT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Error Handling Directions may be found at the page footer
+sudo apt-get update
+sudo apt-get upgrade
+A) sudo apt-get install geany
+B) sudo apt-get install git
+1) sudo apt-get install apache2
+2) sudo apt-get install mysql-server
+3) sudo apt-get install php5 libapache2-mod-php5sudo // Solutions below
+4) sudo /etc/init.d/apache2 restart
+// Check http://localhost/
+// Check PHP is working : php -r 'echo "\n\nYour PHP installation is working fine.\n\n\n";'
+sudo apt-get update
+5) sudo apt-get install phpmyadmin php-mbstring php-gettext
+6) sudo phpenmod mcrypt
+7) sudo phpenmod mbstring
+sudo systemctl restart apache2
+// Check lhttp://localhost/phpmyadmin  If not, Instructions are below
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WORKING WITH GIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo git config --global user.name "karpatic"
+sudo git config --global user.email "charles.karpati@gmail.com"
+git clone https://github.com/OWNEROFCODEUSERNAME/YOUR-REPOSITORY
+git init YOUR-REPOSITORY //Should be the same name as the Github Project Name
+git add FILENAME  //-r -a
+git commit -m "DESCRIPTION OF FILE CHANGES"
+git remote add ORIGIN http://github.com/OWNEROFCODEUSERNAME/YOUR-REPOSITORY.git
+git push ORIGIN master
+git pull origin master
+git remote -v
+git remote remove origin
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PHP INSTALL ERROR HANDLING #3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo apt-get purge `dpkg -l | grep php| awk '{print $2}' |tr "\n" " "`
+sudo add-apt-repository ppa:ondrej/php
+// If you get add-apt-repository: command not found run the following command first : sudo apt-get install software-properties-common
+sudo apt-get update
+sudo apt-get install php5.6
+// You can install php5.6 modules too for example
+sudo apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml
+// Verify your Version : If you have installed php5.6-cli
+sudo php -v
+//If you don't have php5.6-cli, put this on a .php file
+<?php phpinfo(); ?>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PHPMYADMIN INSTALL ERROR HANDLING #7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudo geany /etc/apache2/apache2.conf
+// add the following line to the end of the file.
+Include /etc/phpmyadmin/apache.conf
+/etc/init.d/apache2 restart
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PHPMYADMIN INSTALL ERROR HANDLING LAST RESORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://askubuntu.com/questions/760741/localhost-phpmyadmin-not-working-on-ubuntu-16-04
+Fresh Install 
+sudo service mysql stop
+sudo apt-get --purge remove mysql*
+sudo apt-get --purge remove phpmyadmin
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo apt-get update
+sudo apt-get install mysql-server phpmyadmin php-gettext php-mbstring
+sudo service apache2 restart
+
+// https://stackoverflow.com/questions/10895163/how-to-find-out-the-mysql-root-password
+//update user set authentication_string=password('1111') where user='root';
+
+// sudo gedit /etc/phpmyadmin/config-db.php (as root)
+//https://stackoverflow.com/questions/33579480/what-is-the-default-username-and-password-of-phpmyadmin
+
+// sudo -H gedit /etc/dbconfig-common/phpmyadmin.conf
+
+// sudo gedit /etc/phpmyadmin/config.inc.php 
+// Uncomment $cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
