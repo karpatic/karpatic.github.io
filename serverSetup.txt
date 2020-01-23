@@ -9,7 +9,7 @@ B) sudo apt-get install git
 C) sudo apt-get install npm
 1) sudo apt-get install apache2
 2) sudo apt-get install mysql-server
-3) sudo apt-get install php5 libapache2-mod-php5sudo // Solutions below
+3) sudo apt-get install php5 libapache2-mod-php5 // Solutions below
 4) sudo /etc/init.d/apache2 restart
 // Check http://localhost/
 // Check PHP is working : php -r 'echo "\n\nYour PHP installation is working fine.\n\n\n";'
