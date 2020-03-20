@@ -89,3 +89,31 @@ sudo service apache2 restart
 
 // sudo gedit /etc/phpmyadmin/config.inc.php 
 // Uncomment $cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aliases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Create these shortcuts after setting up your server
+
+
+# Example: alias tailmyless='cd bla && lessc style.less > s.css'
+alias gotoweb='cd ~/../../var/www/html && ls'
+# Add New Rule
+alias addrule='sudo geany ~/.bashrc'
+# Set New Rule
+alias setrule='source ~/.bashrc'
+# Open Directory
+alias openup='nautilus ./'
+
+# Recompile
+alias recompile='cd ~/../../var/www/html/sudo npm run build; ls'
+# Redeploy
+alias deploy='cd ~/../../var/www/html/sudo npm run build; ls'
+#sudo apt-get install openssh-server
+
+# This will prerender our Client side code on the server. 
+# TODO : I need two of these functions for desktop & mobile
+# TODO : Once I do that, I will need to resolve sending out the right file to the right screen
+alias prerender='usus render --url file:///var/www/html/siteConstructor/dist/index.html --inlineStyles > ./dist/indexx.html; mv ./dist/indexx.html ./dist/index.html'
+#runbuild
+alias runbuild='sudo npm run build; sudo chmod -R 777 ./dist; prerender'
