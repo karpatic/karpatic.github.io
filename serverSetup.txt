@@ -20,6 +20,9 @@ sudo apt-get update
 sudo systemctl restart apache2
 // Check lhttp://localhost/phpmyadmin  If not, Instructions are below
 
+// Quicker PHP Setup Instructions: https://blog.ashfame.com/2011/03/quickly-setup-localhost-environment-ubuntu/
+// PHPMyAdmin Username and Password: sudo -H nano /etc/dbconfig-common/phpmyadmin.conf
+
 
 
 
